@@ -4,50 +4,48 @@ import sum from './basic';
 // console.log('worked');
 //
 // console.log(sum([1, 2]));
+let arr = [
+  {type: "Bowman",
+    attack: 25,
+    defence: 25
+  },
+  {type: "Swordsman",
+    attack: 40,
+    defence: 10
+  },
+  {type: "Magician",
+    attack: 10,
+    defence: 40
+  },
+  {type: "Undead",
+    attack: 25,
+    defence: 25
+  },
+  {type: "Zombie",
+    attack: 40,
+    defence: 10
+  },
+  {type: "Daemon",
+    attack: 10,
+    defence: 40
+  }
+];
+
+let arrType = arr.map(elem => elem.type)
+
 export function Character(name, type) {
   this.name = name;
   this.type = type;
   this.health = 100;
   this.level = 1;
 
-  try {
-    if (name.length < 2 || name.length > 10) {
-      throw new Error("Invalide name")
-    }
-    let arrType = ["Bowman", "Swordsman", "Magician", "Daemon", "Undead", "Zombie"];
-    if ( arrType.indexOf(type) === -1) {
-      throw new Error("Unknow character")
-    }
-  } catch (e) {
-    console.log(e)
+  if (name.length < 2 || name.length > 10) {
+    throw new Error("Invalide name")
+  }
+  if (arrType.indexOf(type) === -1) {
+    throw new Error("Unknow character")
   }
 
-  let arr = [
-    {type: "Bowman",
-      attack: 25,
-      defence: 25
-    },
-    {type: "Swordsman",
-      attack: 40,
-      defence: 10
-    },
-    {type: "Magician",
-      attack: 10,
-      defence: 40
-    },
-    {type: "Undead",
-      attack: 25,
-      defence: 25
-    },
-    {type: "Zombie",
-      attack: 40,
-      defence: 10
-    },
-    {type: "Daemon",
-      attack: 10,
-      defence: 40
-    }
-  ];
 
   let battle = arr.filter(function(item){
     if(item.type === type) {
@@ -64,3 +62,5 @@ Character.prototype.damage = function(points) {
     return this.health;
   }
 }
+
+
