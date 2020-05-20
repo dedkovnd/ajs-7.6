@@ -56,7 +56,7 @@ export function Character(name, type) {
   this.defence = battle[0].defence;
 }
 
-Character.prototype.damage = function(points) {
+export const damage = Character.prototype.damage = function(points) {
   if (this.health >= 0) {
     this.health -= points * (1 - this.defence / 100);
     return this.health;
