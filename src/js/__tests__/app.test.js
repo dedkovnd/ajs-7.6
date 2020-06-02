@@ -3,8 +3,6 @@ import {damage} from "../app";
 
 test("length names and true's type", ()=> {
   const swordsman = new Character("Boob","Swordsman")
-  // const worstman = new Character("Boob", "Worstman")
-  // const bubuman = new Character("b","Undead")
   const swordsmanType = {
     name: 'Boob',
     type: 'Swordsman',
@@ -14,8 +12,8 @@ test("length names and true's type", ()=> {
     defence: 10
   }
   expect(swordsman).toEqual(swordsmanType)
-  // expect(worstman).toThrowError("Unknow character")
-  // expect(bubuman).toThrowError("Invalide name")
+  expect(()=> {new Character("Boob", "Worstman")}).toThrowError("Unknow character")
+  expect(()=> {new Character("b","Undead")}).toThrowError("Invalide name")
 })
 
 test("damage can calculate the damage",()=>{
